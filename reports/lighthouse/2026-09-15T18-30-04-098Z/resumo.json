@@ -1,0 +1,217 @@
+{
+  "environment": {
+    "executedAt": "2026-09-15T18:30:04.624Z",
+    "node": "v24.15.0",
+    "npm": "undefined",
+    "lighthouse": "13.4.1",
+    "playwright": "^1.49.1",
+    "vite": "^8.3.0",
+    "react": "^19.2.8",
+    "tanstackRouter": "^1.95.0",
+    "tanstackQuery": "^5.62.0",
+    "platform": "win32 10.0.26200 x64",
+    "cpus": 12,
+    "totalMemoryGb": "15.9",
+    "previewUrl": "http://localhost:4173",
+    "networkThrottling": "Lighthouse default (simulated): mobile 4x CPU slowdown / slow 4G; desktop 40ms RTT, 10 Mbps, no CPU slowdown",
+    "runsPerPageAndProfile": 3,
+    "profiles": [
+      "mobile",
+      "desktop"
+    ],
+    "pages": [
+      "/",
+      "/nfts/emerald-ape-042"
+    ]
+  },
+  "summaries": [
+    {
+      "pageLabel": "inicio",
+      "profileLabel": "mobile",
+      "pageUrl": "http://localhost:4173/",
+      "runs": [
+        {
+          "run": 1,
+          "lighthouseVersion": "13.4.1",
+          "performance": 82,
+          "accessibility": 100,
+          "bestPractices": 96,
+          "seo": 92,
+          "lcpMs": 3907,
+          "cls": 0.0004107510415662251,
+          "tbtMs": 96
+        },
+        {
+          "run": 2,
+          "lighthouseVersion": "13.4.1",
+          "performance": 83,
+          "accessibility": 100,
+          "bestPractices": 96,
+          "seo": 92,
+          "lcpMs": 3896,
+          "cls": 0.0004107510415662251,
+          "tbtMs": 100
+        },
+        {
+          "run": 3,
+          "lighthouseVersion": "13.4.1",
+          "performance": 83,
+          "accessibility": 100,
+          "bestPractices": 96,
+          "seo": 92,
+          "lcpMs": 3884,
+          "cls": 0.0004107510415662251,
+          "tbtMs": 81
+        }
+      ],
+      "performanceScoreMedian": 83,
+      "accessibilityScoreMedian": 100,
+      "bestPracticesScoreMedian": 96,
+      "seoScoreMedian": 92,
+      "largestContentfulPaintMedianInMilliseconds": 3896.1884,
+      "cumulativeLayoutShiftMedian": 0.0004107510415662251,
+      "totalBlockingTimeMedianInMilliseconds": 95.5
+    },
+    {
+      "pageLabel": "inicio",
+      "profileLabel": "desktop",
+      "pageUrl": "http://localhost:4173/",
+      "runs": [
+        {
+          "run": 1,
+          "lighthouseVersion": "13.4.1",
+          "performance": 99,
+          "accessibility": 100,
+          "bestPractices": 96,
+          "seo": 92,
+          "lcpMs": 908,
+          "cls": 0.0001672522827536678,
+          "tbtMs": 6
+        },
+        {
+          "run": 2,
+          "lighthouseVersion": "13.4.1",
+          "performance": 99,
+          "accessibility": 100,
+          "bestPractices": 96,
+          "seo": 92,
+          "lcpMs": 906,
+          "cls": 0.0001672522827536678,
+          "tbtMs": 5
+        },
+        {
+          "run": 3,
+          "lighthouseVersion": "13.4.1",
+          "performance": 99,
+          "accessibility": 100,
+          "bestPractices": 96,
+          "seo": 92,
+          "lcpMs": 893,
+          "cls": 0.0001672522827536678,
+          "tbtMs": 4
+        }
+      ],
+      "performanceScoreMedian": 99,
+      "accessibilityScoreMedian": 100,
+      "bestPracticesScoreMedian": 96,
+      "seoScoreMedian": 92,
+      "largestContentfulPaintMedianInMilliseconds": 906.05555,
+      "cumulativeLayoutShiftMedian": 0.0001672522827536678,
+      "totalBlockingTimeMedianInMilliseconds": 4.5
+    },
+    {
+      "pageLabel": "detalhe-do-nft",
+      "profileLabel": "mobile",
+      "pageUrl": "http://localhost:4173/nfts/emerald-ape-042",
+      "runs": [
+        {
+          "run": 1,
+          "lighthouseVersion": "13.4.1",
+          "performance": 86,
+          "accessibility": 100,
+          "bestPractices": 96,
+          "seo": 92,
+          "lcpMs": 3599,
+          "cls": 0.0004107510415662251,
+          "tbtMs": 32
+        },
+        {
+          "run": 2,
+          "lighthouseVersion": "13.4.1",
+          "performance": 86,
+          "accessibility": 100,
+          "bestPractices": 96,
+          "seo": 92,
+          "lcpMs": 3631,
+          "cls": 0.0004107510415662251,
+          "tbtMs": 36
+        },
+        {
+          "run": 3,
+          "lighthouseVersion": "13.4.1",
+          "performance": 86,
+          "accessibility": 100,
+          "bestPractices": 96,
+          "seo": 92,
+          "lcpMs": 3602,
+          "cls": 0.0004107510415662251,
+          "tbtMs": 32
+        }
+      ],
+      "performanceScoreMedian": 86,
+      "accessibilityScoreMedian": 100,
+      "bestPracticesScoreMedian": 96,
+      "seoScoreMedian": 92,
+      "largestContentfulPaintMedianInMilliseconds": 3601.9674,
+      "cumulativeLayoutShiftMedian": 0.0004107510415662251,
+      "totalBlockingTimeMedianInMilliseconds": 31.5
+    },
+    {
+      "pageLabel": "detalhe-do-nft",
+      "profileLabel": "desktop",
+      "pageUrl": "http://localhost:4173/nfts/emerald-ape-042",
+      "runs": [
+        {
+          "run": 1,
+          "lighthouseVersion": "13.4.1",
+          "performance": 90,
+          "accessibility": 100,
+          "bestPractices": 96,
+          "seo": 92,
+          "lcpMs": 845,
+          "cls": 0.18914093649327995,
+          "tbtMs": 0
+        },
+        {
+          "run": 2,
+          "lighthouseVersion": "13.4.1",
+          "performance": 91,
+          "accessibility": 100,
+          "bestPractices": 96,
+          "seo": 92,
+          "lcpMs": 821,
+          "cls": 0.18914093649327995,
+          "tbtMs": 0
+        },
+        {
+          "run": 3,
+          "lighthouseVersion": "13.4.1",
+          "performance": 90,
+          "accessibility": 100,
+          "bestPractices": 96,
+          "seo": 92,
+          "lcpMs": 842,
+          "cls": 0.18914093649327995,
+          "tbtMs": 0
+        }
+      ],
+      "performanceScoreMedian": 90,
+      "accessibilityScoreMedian": 100,
+      "bestPracticesScoreMedian": 96,
+      "seoScoreMedian": 92,
+      "largestContentfulPaintMedianInMilliseconds": 842.3619499999999,
+      "cumulativeLayoutShiftMedian": 0.18914093649327995,
+      "totalBlockingTimeMedianInMilliseconds": 0
+    }
+  ]
+}

@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Slider } from "@/components/ui/Slider";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/Select";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/Tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs";
 import { LoadingSkeleton } from "@/components/common/LoadingSkeleton";
 import { NftCard } from "@/components/common/NftCard";
 import { MobileHomeToolbar } from "@/components/common/MobileHomeToolbar";
@@ -236,7 +236,7 @@ const HomePage = () => {
       search: {
         ...searchParameters,
         ...nextSearch,
-        page: 1,
+        page: nextSearch.page ?? 1,
       },
     });
   };
@@ -289,7 +289,7 @@ const HomePage = () => {
   const catalogSidebarContent = (
     <div className="grid gap-8">
       <div>
-        <h3 className="font-display text-lg font-bold text-foreground">Coleções</h3>
+        <h2 className="font-display text-lg font-bold text-foreground">Coleções</h2>
 
         <ul className="mt-4 grid gap-3">
           {catalogSidebarCollections.map((categoryItem) => {
@@ -319,7 +319,7 @@ const HomePage = () => {
       </div>
 
       <div>
-        <h3 className="font-display text-lg font-bold text-foreground">Faixa de preço</h3>
+        <h2 className="font-display text-lg font-bold text-foreground">Faixa de preço</h2>
 
         <div className="mt-5 px-1">
           <Slider
@@ -346,7 +346,7 @@ const HomePage = () => {
       </div>
 
       <div>
-        <h3 className="font-display text-lg font-bold text-foreground">Rede</h3>
+        <h2 className="font-display text-lg font-bold text-foreground">Rede</h2>
 
         <ul className="mt-4 grid gap-3">
           {catalogSidebarNetworks.map((networkItem) => (
@@ -432,20 +432,6 @@ const HomePage = () => {
               />
             </a>
           </div>
-
-          <div className="pointer-events-none absolute bottom-0 right-0 top-0 w-1/2 overflow-hidden rounded-r-[26px] md:hidden">
-            <img
-              src="/images/nfts/emerald-ape-042.png"
-              alt="Emerald Ape #042"
-              className="absolute right-4 top-3 size-36 rounded-[14px] object-cover object-center"
-            />
-
-            <img
-              src="/images/nfts/sage-nomad-009.png"
-              alt="Sage Nomad #009"
-              className="absolute bottom-4 left-1 size-16 rounded-card object-cover shadow-lg"
-            />
-          </div>
         </div>
 
         <div className="hidden overflow-hidden rounded-[20px] bg-surface-2 md:block">
@@ -485,6 +471,12 @@ const HomePage = () => {
                 <TabsTrigger value="novo">Novos lançamentos</TabsTrigger>
                 <TabsTrigger value="em-alta">Em alta</TabsTrigger>
               </TabsList>
+
+              {/* - Os gatilhos geram aria-controls para o painel de cada aba; sem TabsContent montado, o id referenciado não existe e o valor do atributo fica inválido para a auditoria. Os painéis permanecem ocultos porque o conteúdo da aba (catálogo) vive fora do componente Tabs. - */}
+
+              <TabsContent value="all" forceMount className="hidden" />
+              <TabsContent value="novo" forceMount className="hidden" />
+              <TabsContent value="em-alta" forceMount className="hidden" />
             </Tabs>
 
             <div className="flex items-center gap-2">
@@ -494,7 +486,10 @@ const HomePage = () => {
                 value={searchParameters.sort ?? "relevance"}
                 onValueChange={(nextSort) => updateSearch({ sort: nextSort as NFTSortOption })}
               >
-                <SelectTrigger className="w-48">
+                <SelectTrigger
+                  className="w-48"
+                  aria-label="Ordenar por"
+                >
                   <SelectValue />
                 </SelectTrigger>
 
@@ -577,12 +572,13 @@ const HomePage = () => {
             </div>
           ) : (
             <div className="mt-7 grid grid-cols-2 gap-4 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-8">
-              {visibleNftList.map((nft) => (
+              {visibleNftList.map((nft, nftIndex) => (
                 <NftCard
                   key={nft.id}
                   nft={nft}
                   isFavorite={favoriteNftIdsQuery.data?.includes(nft.id) ?? false}
                   isFavoritePending={favoriteMutation.isPending}
+                  isPriorityImage={nftIndex < 2}
                   onToggleFavorite={(nftId) => {
                     if (!getSessionToken()) {
                       void navigate({ to: "/login", search: { redirect: `${window.location.pathname}${window.location.search}` } });
@@ -591,10 +587,6 @@ const HomePage = () => {
                     favoriteMutation.mutate(nftId);
                   }}
                   onAddToCart={(nftId) => {
-                    if (!getSessionToken()) {
-                      void navigate({ to: "/login", search: { redirect: `${window.location.pathname}${window.location.search}` } });
-                      return;
-                    }
                     cartMutation.mutate(nftId);
                   }}
                 />

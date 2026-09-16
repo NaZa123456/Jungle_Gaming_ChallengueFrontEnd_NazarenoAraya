@@ -1,0 +1,122 @@
+{
+  "environment": {
+    "executedAt": "2026-09-15T18:17:27.139Z",
+    "node": "v24.15.0",
+    "npm": "undefined",
+    "lighthouse": "13.4.1",
+    "playwright": "^1.49.1",
+    "vite": "^8.3.0",
+    "react": "^19.2.8",
+    "tanstackRouter": "^1.95.0",
+    "tanstackQuery": "^5.62.0",
+    "platform": "win32 10.0.26200 x64",
+    "cpus": 12,
+    "totalMemoryGb": "15.9",
+    "previewUrl": "http://localhost:4173",
+    "networkThrottling": "Lighthouse default (simulated): mobile 4x CPU slowdown / slow 4G; desktop 40ms RTT, 10 Mbps, no CPU slowdown",
+    "runsPerPageAndProfile": 3,
+    "profiles": [
+      "mobile",
+      "desktop"
+    ],
+    "pages": [
+      "/"
+    ]
+  },
+  "summaries": [
+    {
+      "pageLabel": "inicio",
+      "profileLabel": "mobile",
+      "pageUrl": "http://localhost:4173/",
+      "runs": [
+        {
+          "run": 1,
+          "lighthouseVersion": "13.4.1",
+          "performance": 82,
+          "accessibility": 100,
+          "bestPractices": 96,
+          "seo": 92,
+          "lcpMs": 3914,
+          "cls": 0.0004107510415662251,
+          "tbtMs": 124
+        },
+        {
+          "run": 2,
+          "lighthouseVersion": "13.4.1",
+          "performance": 83,
+          "accessibility": 100,
+          "bestPractices": 96,
+          "seo": 92,
+          "lcpMs": 3885,
+          "cls": 0.0004107510415662251,
+          "tbtMs": 90
+        },
+        {
+          "run": 3,
+          "lighthouseVersion": "13.4.1",
+          "performance": 84,
+          "accessibility": 100,
+          "bestPractices": 96,
+          "seo": 92,
+          "lcpMs": 3730,
+          "cls": 0.0004107510415662251,
+          "tbtMs": 88
+        }
+      ],
+      "performanceScoreMedian": 83,
+      "accessibilityScoreMedian": 100,
+      "bestPracticesScoreMedian": 96,
+      "seoScoreMedian": 92,
+      "largestContentfulPaintMedianInMilliseconds": 3884.5748000000003,
+      "cumulativeLayoutShiftMedian": 0.0004107510415662251,
+      "totalBlockingTimeMedianInMilliseconds": 90
+    },
+    {
+      "pageLabel": "inicio",
+      "profileLabel": "desktop",
+      "pageUrl": "http://localhost:4173/",
+      "runs": [
+        {
+          "run": 1,
+          "lighthouseVersion": "13.4.1",
+          "performance": 99,
+          "accessibility": 100,
+          "bestPractices": 96,
+          "seo": 92,
+          "lcpMs": 901,
+          "cls": 0.0001672522827536678,
+          "tbtMs": 7
+        },
+        {
+          "run": 2,
+          "lighthouseVersion": "13.4.1",
+          "performance": 99,
+          "accessibility": 100,
+          "bestPractices": 96,
+          "seo": 92,
+          "lcpMs": 910,
+          "cls": 0.0001672522827536678,
+          "tbtMs": 6
+        },
+        {
+          "run": 3,
+          "lighthouseVersion": "13.4.1",
+          "performance": 99,
+          "accessibility": 100,
+          "bestPractices": 96,
+          "seo": 92,
+          "lcpMs": 898,
+          "cls": 0.0001672522827536678,
+          "tbtMs": 5
+        }
+      ],
+      "performanceScoreMedian": 99,
+      "accessibilityScoreMedian": 100,
+      "bestPracticesScoreMedian": 96,
+      "seoScoreMedian": 92,
+      "largestContentfulPaintMedianInMilliseconds": 900.9794,
+      "cumulativeLayoutShiftMedian": 0.0001672522827536678,
+      "totalBlockingTimeMedianInMilliseconds": 6
+    }
+  ]
+}

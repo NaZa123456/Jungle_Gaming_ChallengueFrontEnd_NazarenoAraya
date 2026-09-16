@@ -10,14 +10,14 @@ e os eventos em `src/mocks/realtimeBus.ts` e `src/mocks/socketHandlers.ts`.
 
 ## Persistência e reset
 
-O estado simulado é persistido em `localStorage` na chave `kurio-mock-db-v1`.
+O estado simulado é persistido em `localStorage` na chave `kurio-mock-db-v2`.
 O endpoint `POST /api/dev/reset` restaura fixtures, sessões, carrinhos,
 favoritos, carteiras e pedidos para o cenário inicial.
 
 ## Cenários
 
-Os cenários podem ser definidos por `?scenario=` ou pelo objeto global
-`window.__kurioScenarios`.
+Os cenários podem ser ativados pelo parâmetro `?scenario=` na URL (por exemplo,
+`http://localhost:5173/?scenario=slow`).
 
 | Cenário | Comportamento |
 | --- | --- |

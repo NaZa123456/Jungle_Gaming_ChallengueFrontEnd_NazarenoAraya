@@ -7,13 +7,15 @@ interface NftCardProps {
   nft: NFT;
   isFavorite: boolean;
   isFavoritePending: boolean;
+  isPriorityImage?: boolean;
   onToggleFavorite: (nftId: string) => void;
   onAddToCart: (nftId: string) => void;
 }
 
-const NftCard = ({ nft, isFavorite, isFavoritePending, onToggleFavorite, onAddToCart }: NftCardProps) => {
+const NftCard = ({ nft, isFavorite, isFavoritePending, isPriorityImage, onToggleFavorite, onAddToCart }: NftCardProps) => {
   const [imageSrc, setImageSrc] = useState(nft.image);
   const isSoldOut = nft.edition.status === "sold_out";
+  const badgeLabel = isSoldOut ? "Esgotado" : nft.tags[0] ? (nft.tags[0] === "raro" ? "Raro" : nft.tags[0] === "novo" ? "Novo" : "Em alta") : null;
 
   return (
     <article className="group min-w-0">
@@ -22,22 +24,21 @@ const NftCard = ({ nft, isFavorite, isFavoritePending, onToggleFavorite, onAddTo
           to="/nfts/$nftId"
           params={{ nftId: nft.id }}
           className="block"
-          aria-label={`Ver detalhes de ${nft.name}`}
+          aria-label={`Ver detalhes de ${badgeLabel ? `${badgeLabel} ` : ""}${nft.name}`}
         >
           <div className="relative aspect-square overflow-hidden rounded-control bg-surface-2">
             <img
               src={imageSrc}
               alt={nft.name}
               className="block h-full w-full object-cover"
+              fetchPriority={isPriorityImage ? "high" : undefined}
               onError={() => setImageSrc("/images/nfts/emerald-ape-042.png")}
             />
-            {isSoldOut ? (
-              <span className="absolute left-0 top-0 rounded-none bg-foreground px-2 py-1 text-[9px] font-bold uppercase text-background">
-                Esgotado
-              </span>
-            ) : nft.tags[0] ? (
-              <span className="absolute left-0 top-0 rounded-none bg-accent px-2 py-1 text-[9px] font-bold uppercase text-accent-foreground">
-                {nft.tags[0] === "raro" ? "Raro" : nft.tags[0] === "novo" ? "Novo" : "Em alta"}
+            {badgeLabel ? (
+              <span
+                className={`absolute left-0 top-0 rounded-none px-2 py-1 text-[9px] font-bold uppercase ${isSoldOut ? "bg-foreground text-background" : "bg-accent text-accent-foreground"}`}
+              >
+                {badgeLabel}
               </span>
             ) : null}
           </div>
@@ -63,7 +64,7 @@ const NftCard = ({ nft, isFavorite, isFavoritePending, onToggleFavorite, onAddTo
           params={{ nftId: nft.id }}
           className="block min-w-0"
         >
-          <h3 className="truncate font-mono text-[11px] font-normal leading-4 text-foreground">{nft.name}</h3>
+          <h2 className="truncate font-mono text-[11px] font-normal leading-4 text-foreground">{nft.name}</h2>
         </Link>
 
         <div className="mt-0.5 flex items-center justify-between gap-2">
@@ -74,7 +75,7 @@ const NftCard = ({ nft, isFavorite, isFavoritePending, onToggleFavorite, onAddTo
 
           <button
             type="button"
-            aria-label={`Adicionar ${nft.name} ao carrinho`}
+            aria-label={`Comprar ${nft.name}`}
             onClick={() => onAddToCart(nft.id)}
             disabled={isSoldOut}
             className="rounded-control bg-accent px-3 py-1.5 text-[9px] font-bold uppercase text-accent-foreground transition-opacity disabled:opacity-50"

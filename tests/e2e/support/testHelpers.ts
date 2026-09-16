@@ -49,8 +49,6 @@ const resetMockedBackend = async (page: Page) => {
   await page.goto("/");
   await page.locator("body").waitFor();
 
-  console.log("URL:", await page.url());
-
   const responseStatus = await page.evaluate(async () => {
     const response = await fetch("/api/dev/reset", {
       method: "POST",

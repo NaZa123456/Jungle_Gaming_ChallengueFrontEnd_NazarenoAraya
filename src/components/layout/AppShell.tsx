@@ -19,7 +19,7 @@ interface PrimaryNavigationItem {
 
 const primaryNavigationItems: PrimaryNavigationItem[] = [
   { label: "Início", href: "/" },
-  { label: "Mercado", href: "/#catalogo" },
+  { label: "Mercado", href: "/nfts/emerald-ape-042" },
   { label: "Criadores", href: "/#criadores" },
   { label: "Aprenda", href: "/#aprenda" },
 ];
@@ -127,12 +127,29 @@ const AppShell = () => {
         </div>
         {isMobileMenuOpen ? (
           <nav id="mobile-primary-menu" aria-label="Menu principal" className="border-t border-border bg-surface px-4 py-3">
+            <div className="mb-1 flex justify-end">
+              <button
+                type="button"
+                aria-label="Fechar menu"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="grid size-9 place-items-center rounded-control border border-border"
+              >
+                <X size={18} />
+              </button>
+            </div>
+
             <div className="grid gap-1">
-              {primaryNavigationItems.map((navigationItem) => (
-                <a key={navigationItem.label} href={navigationItem.href} className="rounded-control p-3 hover:bg-surface-2" onClick={() => setIsMobileMenuOpen(false)}>
-                  {navigationItem.label}
-                </a>
-              ))}
+              {primaryNavigationItems.map((navigationItem) =>
+                navigationItem.label === "Mercado" ? (
+                  <Link key={navigationItem.label} to="/nfts/$nftId" params={{ nftId: "emerald-ape-042" }} className="rounded-control p-3 hover:bg-surface-2" onClick={() => setIsMobileMenuOpen(false)}>
+                    {navigationItem.label}
+                  </Link>
+                ) : (
+                  <a key={navigationItem.label} href={navigationItem.href} className="rounded-control p-3 hover:bg-surface-2" onClick={() => setIsMobileMenuOpen(false)}>
+                    {navigationItem.label}
+                  </a>
+                ),
+              )}
               <Link to="/profile" className="rounded-control p-3 hover:bg-surface-2" onClick={() => setIsMobileMenuOpen(false)}>Perfil</Link>
               {authenticatedUser ? (
                 <button type="button" className="rounded-control p-3 text-left hover:bg-surface-2" onClick={() => void handleLogout()}>Sair</button>
@@ -154,15 +171,19 @@ const AppShell = () => {
           </Link>
 
           <nav className="hidden items-center gap-6 text-sm text-muted md:flex">
-            {primaryNavigationItems.map((navigationItem) => (
-              <a
-                key={navigationItem.label}
-                href={navigationItem.href}
-                className={`border-b-2 border-transparent py-6 transition-colors hover:text-foreground ${(navigationItem.label === "Início" && pathname === "/") || (navigationItem.label === "Mercado" && (pathname === "/cart" || pathname === "/checkout" || pathname.startsWith("/nfts/"))) ? "border-accent text-accent" : ""}`}
-              >
-                {navigationItem.label}
-              </a>
-            ))}
+            {primaryNavigationItems.map((navigationItem) => {
+              const linkClassName = `border-b-2 border-transparent py-6 transition-colors hover:text-foreground ${(navigationItem.label === "Início" && pathname === "/") || (navigationItem.label === "Mercado" && (pathname === "/cart" || pathname === "/checkout" || pathname.startsWith("/nfts/"))) ? "border-accent text-accent" : ""}`;
+
+              return navigationItem.label === "Mercado" ? (
+                <Link key={navigationItem.label} to="/nfts/$nftId" params={{ nftId: "emerald-ape-042" }} className={linkClassName}>
+                  {navigationItem.label}
+                </Link>
+              ) : (
+                <a key={navigationItem.label} href={navigationItem.href} className={linkClassName}>
+                  {navigationItem.label}
+                </a>
+              );
+            })}
           </nav>
 
           <div className="ml-auto flex items-center gap-3">
@@ -187,7 +208,7 @@ const AppShell = () => {
             <Link
               to="/cart"
               className="relative grid size-9 place-items-center text-muted transition-colors hover:text-foreground"
-              aria-label="Carrinho de NFTs"
+              aria-label={`Carrinho de NFTs, ${cartItemCount} ${cartItemCount === 1 ? "item" : "itens"}`}
             >
               <ShoppingCart size={17} />
 

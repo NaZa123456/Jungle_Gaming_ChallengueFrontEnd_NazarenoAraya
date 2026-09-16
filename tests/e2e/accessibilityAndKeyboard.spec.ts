@@ -77,7 +77,7 @@ test.describe("Acessibilidade e navegação por teclado", () => {
 
   test("botão de aplicar cupom no Carrinho possui aria-label", async ({ page }) => {
     await page.goto("/");
-    await page.locator('button[aria-label^="Adicionar"][aria-label$="ao carrinho"]').first().click();
+    await page.locator('button[aria-label^="Comprar"]').first().click();
     await page.waitForURL("/cart");
 
     const applyCouponButton = page.locator("button:has(svg.lucide-ticket)");
@@ -113,7 +113,7 @@ test.describe("Acessibilidade e navegação por teclado", () => {
 
   test("tabela do carrinho expõe cabeçalhos de coluna e legenda para leitores de tela", async ({ page }) => {
     await page.goto("/");
-    await page.locator('button[aria-label^="Adicionar"][aria-label$="ao carrinho"]').first().click();
+    await page.locator('button[aria-label^="Comprar"]').first().click();
     await page.waitForURL("/cart");
 
     await expect(page.locator("table caption")).toHaveText("Itens no seu carrinho de NFTs");

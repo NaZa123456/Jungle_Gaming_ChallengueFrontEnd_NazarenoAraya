@@ -234,11 +234,13 @@ Para referência rápida:
    chaves privadas embutem a identidade ativa (seção 5).
 3. ~~`onReconnect` do cliente Socket.IO não está conectado a uma reconciliação com a API REST~~ —
    resolvido: `AppShell` e a tela de confirmação revalidam via REST ao reconectar (seção 8).
-4. Regressão visual: os baselines de início e detalhe (desktop/mobile) já estão versionados em
-   `tests/e2e/visualRegression.spec.ts-snapshots/`. Ainda faltam os baselines de carrinho e pagamento,
-   que devem ser gerados por uma execução real com `playwright test --update-snapshots` antes da entrega.
-5. A suíte Lighthouse está implementada em `scripts/lighthouse.mjs`, mas os relatórios HTML/JSON e
-   a mediana das três execuções por página/perfil ainda precisam ser gerados e versionados.
+4. ~~Regressão visual incompleta: faltavam os baselines de carrinho e pagamento~~ — resolvido:
+   os oito baselines (início, detalhe, carrinho e pagamento × desktop/mobile) estão versionados em
+   `tests/e2e/visualRegression.spec.ts-snapshots/`, gerados por execução real com
+   `playwright test --update-snapshots`.
+5. ~~Relatórios Lighthouse ainda não gerados~~ — resolvido: a suíte em `scripts/lighthouse.mjs`
+   produz HTML/JSON e a mediana das três execuções por página/perfil, versionados em
+   `reports/lighthouse/<data>/`.
 6. `components.json` agora documenta a convenção shadcn/ui usada pelos componentes Radix/Tailwind
    em `src/components/ui`. Não foi adicionada a CLI como dependência de runtime porque os componentes
    entregues são fonte local; caso o avaliador faça uma checagem literal por pacote `shadcn`, validar essa
@@ -253,9 +255,8 @@ Para referência rápida:
 10. ~~Não há cancelamento de requisições REST desatualizadas~~ — resolvido: `fetchNfts` e
     `fetchSingleNft` (`src/features/catalog/api.ts`) repassam o `signal` que o TanStack Query injeta em
     cada `queryFn` para o Axios.
-11. A URL pública já está registrada no README; falta apenas o smoke test final do deployment e a
-    geração dos artefatos de regressão visual/Lighthouse que não podem ser fabricados sem uma execução
-    real do navegador.
+11. A URL pública já está registrada no README e os artefatos de regressão visual e Lighthouse foram
+    gerados por execuções reais; falta apenas o smoke test final do deployment publicado.
 
 
 ## Atualização pré-deploy — 13/09/2026

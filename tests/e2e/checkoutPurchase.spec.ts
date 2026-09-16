@@ -6,7 +6,7 @@ import { applyScenarioPatch, loginThroughUserInterface, resetMockedBackend } fro
 const goToCheckoutWithOneItemInCart = async (page: import("@playwright/test").Page) => {
   await loginThroughUserInterface(page);
   await page.goto("/");
-  await page.locator('button[aria-label^="Adicionar"][aria-label$="ao carrinho"]').first().click();
+  await page.locator('button[aria-label^="Comprar"]').first().click();
   await page.waitForURL("/cart");
   await page.getByRole("button", { name: "Ir para pagamento" }).click();
   await page.waitForURL("/checkout");

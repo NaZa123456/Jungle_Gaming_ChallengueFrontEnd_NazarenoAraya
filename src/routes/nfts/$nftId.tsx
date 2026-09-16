@@ -128,6 +128,7 @@ const NftDetailPage = () => {
                 src={nft.image}
                 alt={nft.name}
                 className="aspect-square w-full rounded-card object-cover"
+                fetchPriority="high"
               />
 
               <button
@@ -192,27 +193,29 @@ const NftDetailPage = () => {
                 </div>
 
                 <div className="mt-4 flex items-center gap-2">
-                  <button
-                    type="button"
-                    aria-label="Diminuir quantidade"
-                    onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    disabled={quantity <= 1}
-                    className="grid size-9 place-items-center rounded-control bg-accent text-accent-foreground disabled:cursor-not-allowed disabled:opacity-40"
-                  >
-                    <Minus size={15} />
-                  </button>
+                  <div role="group" aria-label="Quantidade" className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      aria-label="Diminuir quantidade"
+                      onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                      disabled={quantity <= 1}
+                      className="grid size-9 place-items-center rounded-control bg-accent text-accent-foreground disabled:cursor-not-allowed disabled:opacity-40"
+                    >
+                      <Minus size={15} />
+                    </button>
 
-                  <span>{quantity}</span>
+                    <span>{quantity}</span>
 
-                  <button
-                    type="button"
-                    aria-label="Aumentar quantidade"
-                    onClick={() => setQuantity(Math.min(max, quantity + 1))}
-                    disabled={quantity >= max}
-                    className="grid size-9 place-items-center rounded-control bg-accent text-accent-foreground disabled:cursor-not-allowed disabled:opacity-40"
-                  >
-                    <Plus size={15} />
-                  </button>
+                    <button
+                      type="button"
+                      aria-label="Aumentar quantidade"
+                      onClick={() => setQuantity(Math.min(max, quantity + 1))}
+                      disabled={quantity >= max}
+                      className="grid size-9 place-items-center rounded-control bg-accent text-accent-foreground disabled:cursor-not-allowed disabled:opacity-40"
+                    >
+                      <Plus size={15} />
+                    </button>
+                  </div>
 
                   <Button
                     type="button"

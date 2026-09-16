@@ -5,7 +5,7 @@ const MobileBottomNav = () => {
   const { pathname, search } = useLocation();
 
   const isFavorites = pathname === "/" && search.favorites === "true";
-  const iconClass = (active: boolean) => `grid size-11 place-items-center rounded-full transition-colors ${active ? "text-accent" : "text-muted"}`;
+  const iconClass = (active: boolean) => `grid size-11 place-items-center justify-self-center rounded-full transition-colors ${active ? "text-accent" : "text-muted"}`;
 
   return (
     <nav

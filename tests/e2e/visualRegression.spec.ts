@@ -31,7 +31,7 @@ test.describe("Regressão visual", () => {
     test.skip(testInfo.project.name === "chromium-tablet", "Baseline visual mantida em desktop e mobile.");
 
     await page.goto("/");
-    await page.locator('button[aria-label^="Adicionar"][aria-label$="ao carrinho"]').first().click();
+    await page.locator('button[aria-label^="Comprar"]').first().click();
     await page.waitForURL("/cart");
     await expect(page.getByRole("heading", { name: "Carrinho de NFTs" })).toBeVisible();
     await expect(page).toHaveScreenshot("cart.png", { fullPage: true, animations: "disabled" });
@@ -42,10 +42,10 @@ test.describe("Regressão visual", () => {
 
     await loginThroughUserInterface(page);
     await page.goto("/");
-    await page.locator('button[aria-label^="Adicionar"][aria-label$="ao carrinho"]').first().click();
+    await page.locator('button[aria-label^="Comprar"]').first().click();
     await page.waitForURL("/cart");
     await page.getByRole("button", { name: "Conectar e finalizar" }).click();
-    await expect(page.getByText("Pagamento")).toBeVisible();
+    await expect(page.getByRole("button", { name: "Confirmar compra", visible: true })).toBeVisible();
     await expect(page).toHaveScreenshot("payment.png", { fullPage: true, animations: "disabled" });
   });
 });

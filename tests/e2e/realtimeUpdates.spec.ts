@@ -60,7 +60,7 @@ test.describe("Atualizações em tempo real (Socket.IO)", () => {
   test("reconexão do socket com pedido pendente eventualmente resolve o status", async ({ page }) => {
     await loginThroughUserInterface(page);
     await page.goto("/");
-    await page.locator('button[aria-label^="Adicionar"][aria-label$="ao carrinho"]').first().click();
+    await page.locator('button[aria-label^="Comprar"]').first().click();
     await page.waitForURL("/cart");
     await page.getByRole("button", { name: "Ir para pagamento" }).click();
     await page.waitForURL("/checkout");

@@ -1,0 +1,26 @@
+{
+  "executedAt": "2026-09-15T18:30:04.624Z",
+  "node": "v24.15.0",
+  "npm": "11.12.1",
+  "lighthouse": "13.4.1",
+  "playwright": "^1.49.1",
+  "vite": "^8.3.0",
+  "react": "^19.2.8",
+  "tanstackRouter": "^1.95.0",
+  "tanstackQuery": "^5.62.0",
+  "platform": "win32 10.0.26200 x64",
+  "cpus": 12,
+  "totalMemoryGb": "15.9",
+  "previewUrl": "http://localhost:4173",
+  "networkThrottling": "Lighthouse default (simulated): mobile 4x CPU slowdown / slow 4G; desktop 40ms RTT, 10 Mbps, no CPU slowdown",
+  "runsPerPageAndProfile": 3,
+  "profiles": [
+    "mobile",
+    "desktop"
+  ],
+  "pages": [
+    "/",
+    "/nfts/emerald-ape-042"
+  ],
+  "chrome": "Chrome 152.0.0.0 (HeadlessChrome/152.0.0.0)"
+}
